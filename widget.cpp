@@ -1,10 +1,13 @@
 #include "widget.h"
 #include "ui_widget.h"
+#include "fftwstuff.h"
 #include <QAudioDevice>
 #include <QAudioSource>
 #include <QtEndian>
 #include <math.h>
 #include <stdlib.h>
+
+float rec_arr[500000];
 
 AudioInfo::AudioInfo(const QAudioFormat &format) : m_format(format)
 {
@@ -39,8 +42,6 @@ qreal AudioInfo::calculateLevel(const char *data, qint64 len)
         for (int j = 0; j < m_format.channelCount(); ++j) {
             float value = m_format.normalizedSampleValue(ptr);
 
-
-
             rec_arr[rec_arr_cnt] = value;
 
             maxValue = qMax(value, maxValue);
@@ -52,9 +53,8 @@ qreal AudioInfo::calculateLevel(const char *data, qint64 len)
     }
     frame_cnt++;
     qDebug() << rec_arr_cnt;
-    qDebug() << "here " << frame_cnt << "  " << maxValue;
+    qDebug() << "frame " << frame_cnt << "  " << maxValue;
     return maxValue;
-
 }
 
 qint64 AudioInfo::writeData(const char *data, qint64 len)
@@ -120,6 +120,7 @@ void Widget::restartAudioStream()
                 // {
                 //     qDebug() << m_audioInfo->rec_arr[i];
                 // }
+                fftwStuff::DoIt();
                 Widget::close();
             }
         }
