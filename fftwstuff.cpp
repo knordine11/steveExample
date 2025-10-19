@@ -50,5 +50,4 @@ double fftwStuff::abs(fftw_complex c)
 double fftwStuff::bin_freq(size_t n, size_t Fs, double N)
 {
     return n * Fs / N;
-
 }

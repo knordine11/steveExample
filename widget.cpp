@@ -116,10 +116,6 @@ void Widget::restartAudioStream()
             const qreal level = m_audioInfo->calculateLevel(buffer.constData(), l);
             qDebug() << level;
             if (m_audioInfo->frame_cnt > 100){
-                // for (int i=0; i < 4096; ++i)
-                // {
-                //     qDebug() << m_audioInfo->rec_arr[i];
-                // }
                 int frame_length = 1024;
                 int start = 42 * frame_length;
                 fftwStuff::DoIt(start, frame_length);
@@ -134,4 +130,3 @@ void Widget::on_btnInput_clicked()
     initializeWindow();
     initializeAudio(QMediaDevices::defaultAudioInput());
 }
-
