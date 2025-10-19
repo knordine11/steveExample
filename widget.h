@@ -30,7 +30,6 @@ public:
     qreal calculateLevel(const char *data, qint64 len);
     static void zero_rec_arr();
     int frame_cnt = 0;
-    //float rec_arr[500000];
 
 signals:
     void levelChanged(qreal level);
@@ -66,6 +65,8 @@ private:
     std::unique_ptr<AudioInfo> m_audioInfo;
     std::unique_ptr<QAudioSource> m_audioSource;
     bool m_pullMode = true;
+    int frame_length = 0;
+    int frame_start = 0;
 };
 
 #endif // WIDGET_H

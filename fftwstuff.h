@@ -10,7 +10,7 @@ class fftwStuff : public QObject
     Q_OBJECT
 public:
     explicit fftwStuff(QObject *parent = nullptr);
-    static void DoIt();
+    static void DoIt(int frame_start, int length);
     static double abs(fftw_complex);
     static double bin_freq(size_t, size_t, double);
 

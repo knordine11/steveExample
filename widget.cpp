@@ -120,7 +120,9 @@ void Widget::restartAudioStream()
                 // {
                 //     qDebug() << m_audioInfo->rec_arr[i];
                 // }
-                fftwStuff::DoIt();
+                int frame_length = 1024;
+                int start = 42 * frame_length;
+                fftwStuff::DoIt(start, frame_length);
                 Widget::close();
             }
         }
