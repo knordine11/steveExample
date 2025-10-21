@@ -6,6 +6,7 @@
 #include <QtEndian>
 #include <math.h>
 #include <stdlib.h>
+#include <QMessageBox>
 
 float rec_arr[500000];
 
@@ -117,10 +118,21 @@ void Widget::restartAudioStream()
             qDebug() << level;
             if (m_audioInfo->frame_cnt > 100){
                 int frame_length = 1024;
-                int start = 42 * frame_length;
+                int start = 10 * frame_length;
                 fftwStuff::DoIt(start, frame_length);
                 Widget::close();
             }
+        }
+        m_audioInfo->stop();
+        // message box stall
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::question(this, "Timed Out", "Continue?",
+                                      QMessageBox::Yes|QMessageBox::No);
+        if (reply == QMessageBox::Yes) {
+            qDebug() << "continuing...";
+        } else {
+            qDebug() << "No was clicked";
+            QApplication::quit();
         }
     });
 }
