@@ -3,8 +3,8 @@
 #include "fftw3/fftw3.h"
 #include <cmath>
 #include <iomanip>
+#include <QDebug>
 
-extern float rec_arr[];
 
 fftwStuff::fftwStuff(QObject *parent)
     : QObject{parent}
@@ -14,6 +14,7 @@ fftwStuff::fftwStuff(QObject *parent)
 
 void fftwStuff::DoIt(int frame_start, int length)
 {
+    std::cout << "starting..." << std::endl;
     fftw_complex* in, * out;
     fftw_plan p;
 
@@ -27,7 +28,7 @@ void fftwStuff::DoIt(int frame_start, int length)
     {
         in[i][0] = rec_arr[frame_start+i]*1000;
         in[i][1] = 0.0;
-    }
+    }    
 
     fftw_execute(p);
 
@@ -37,6 +38,7 @@ void fftwStuff::DoIt(int frame_start, int length)
     {
         std::cout << fftwStuff::bin_freq(i, N, Fs) << " Hz : " << fftwStuff::abs(out[i]) << std::endl;
     }
+    std::cout << "rec_arr_cnt: " << rec_arr_cnt << "  length: " << length << std::endl;
     fftw_destroy_plan(p);
     fftw_free(in);
     fftw_free(out);

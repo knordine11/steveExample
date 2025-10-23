@@ -2,9 +2,11 @@
 #define WIDGET_H
 
 #include <QWidget>
-
 #include <QAudioSource>
 #include <QMediaDevices>
+
+extern float rec_arr[500000];
+extern int rec_arr_cnt;
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -31,13 +33,14 @@ public:
     static void zero_rec_arr();
     int frame_cnt = 0;
 
+
 signals:
     void levelChanged(qreal level);
 
 private:
     const QAudioFormat m_format;
     qreal m_level = 0.0; // 0.0 <= m_level <= 1.0    
-    int rec_arr_cnt = 0;    
+
 };
 
 class Widget : public QWidget

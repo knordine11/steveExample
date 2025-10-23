@@ -8,8 +8,6 @@
 #include <stdlib.h>
 #include <QMessageBox>
 
-float rec_arr[500000];
-
 AudioInfo::AudioInfo(const QAudioFormat &format) : m_format(format)
 {
 
@@ -53,7 +51,7 @@ qreal AudioInfo::calculateLevel(const char *data, qint64 len)
         }
     }
     frame_cnt++;
-    qDebug() << rec_arr_cnt;
+    qDebug() << "rec_arr_cnt in widget: " << rec_arr_cnt;
     qDebug() << "frame " << frame_cnt << "  " << maxValue;
     return maxValue;
 }
@@ -72,7 +70,8 @@ Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
 {
-    ui->setupUi(this);    
+    ui->setupUi(this);
+    rec_arr_cnt = 0;
 }
 
 Widget::~Widget()
@@ -123,17 +122,17 @@ void Widget::restartAudioStream()
                 Widget::close();
             }
         }
-        m_audioInfo->stop();
-        // message box stall
-        QMessageBox::StandardButton reply;
-        reply = QMessageBox::question(this, "Timed Out", "Continue?",
-                                      QMessageBox::Yes|QMessageBox::No);
-        if (reply == QMessageBox::Yes) {
-            qDebug() << "continuing...";
-        } else {
-            qDebug() << "No was clicked";
-            QApplication::quit();
-        }
+        // m_audioInfo->stop();
+        // // message box stall
+        // QMessageBox::StandardButton reply;
+        // reply = QMessageBox::question(this, "Timed Out", "Continue?",
+        //                               QMessageBox::Yes|QMessageBox::No);
+        // if (reply == QMessageBox::Yes) {
+        //     qDebug() << "continuing...";
+        // } else {
+        //     qDebug() << "No was clicked";
+        //     QApplication::quit();
+        // }
     });
 }
 

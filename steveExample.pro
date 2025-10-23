@@ -10,12 +10,14 @@ CONFIG += c++17
 
 SOURCES += \
     fftwstuff.cpp \
+    fileloader.cpp \
     main.cpp \
     widget.cpp
 
 HEADERS += \
     fftw3/fftw3.h \
     fftwstuff.h \
+    fileloader.h \
     widget.h
 
 FORMS += \
