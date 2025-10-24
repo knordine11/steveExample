@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>config.txt</file>
         <file>lessons.txt</file>
+        <file>note.png</file>
+        <file>down-arrow.png</file>
     </qresource>
 </RCC>

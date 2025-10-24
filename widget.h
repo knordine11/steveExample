@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QAudioSource>
 #include <QMediaDevices>
+#include <QPixmap>
+#include <QPainter>
 
 extern double rec_arr[];
 extern int rec_arr_cnt;
@@ -52,8 +54,13 @@ public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
 
+protected:
+    void paintEvent(QPaintEvent *event);
+
 private slots:
     void on_btnInput_clicked();
+
+    void on_btnStart_clicked();
 
 private:
     Ui::Widget *ui;

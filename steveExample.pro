@@ -32,6 +32,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     config.txt \
+    down-arrow.png \
     fftw3/COPYRIGHT \
     fftw3/fftw3.f \
     fftw3/fftw3.f03 \
@@ -40,7 +41,8 @@ DISTFILES += \
     fftw3/libfftw3-3.dll \
     fftw3/libfftw3f-3.dll \
     fftw3/libfftw3l-3.dll \
-    lessons.txt
+    lessons.txt \
+    note.png
 
 INCLUDEPATH += $$PWD/fftw3
 DEPENDPATH += $$PWD/fftw3
