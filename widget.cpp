@@ -1,11 +1,14 @@
 #include "widget.h"
 #include "ui_widget.h"
 #include "fftwstuff.h"
+#include "fileloader.h"
+#include "test_class_1.h"
 #include <QAudioDevice>
 #include <QAudioSource>
 #include <QtEndian>
 #include <math.h>
 #include <stdlib.h>
+#include <iostream>
 #include <QMessageBox>
 
 AudioInfo::AudioInfo(const QAudioFormat &format) : m_format(format)
@@ -71,7 +74,17 @@ Widget::Widget(QWidget *parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
+    std::cout << "Hello World!  START" << std::endl;
+    Test_Class_1 tc;
+    tc.zero_rec_arr();
+    tc.make_sin(440.0,0,1024);
+    // tc.look_rec_arr();
+    tc.look_rec_arr(80,100);
+    std::cout << "Hello World!   END  /" << std::endl;
     rec_arr_cnt = 0;
+    FileLoader::ReadConfig();
+    FileLoader::ReadLesson();
+
 }
 
 Widget::~Widget()

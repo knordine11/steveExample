@@ -1,8 +1,9 @@
 #include "widget.h"
 #include <QApplication>
 
-float rec_arr[500000];
-int rec_arr_cnt;
+#define ARR_SIZE 48000
+double rec_arr[ARR_SIZE];
+int arr_size = ARR_SIZE;
 
 int main(int argc, char *argv[])
 {

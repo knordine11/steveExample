@@ -5,8 +5,9 @@
 #include "fftw3/fftw3.h"
 #include <cmath>
 
-extern float rec_arr[500000];
+extern double rec_arr[];
 extern int rec_arr_cnt;
+extern int arr_size;
 
 class fftwStuff : public QObject
 {

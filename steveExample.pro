@@ -12,12 +12,14 @@ SOURCES += \
     fftwstuff.cpp \
     fileloader.cpp \
     main.cpp \
+    test_class_1.cpp \
     widget.cpp
 
 HEADERS += \
     fftw3/fftw3.h \
     fftwstuff.h \
     fileloader.h \
+    test_class_1.h \
     widget.h
 
 FORMS += \
@@ -29,6 +31,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    config.txt \
     fftw3/COPYRIGHT \
     fftw3/fftw3.f \
     fftw3/fftw3.f03 \
@@ -36,9 +39,13 @@ DISTFILES += \
     fftw3/fftw3q.f03 \
     fftw3/libfftw3-3.dll \
     fftw3/libfftw3f-3.dll \
-    fftw3/libfftw3l-3.dll
+    fftw3/libfftw3l-3.dll \
+    lessons.txt
 
 INCLUDEPATH += $$PWD/fftw3
 DEPENDPATH += $$PWD/fftw3
 
 unix|win32: LIBS += -L$$PWD/fftw3/ -llibfftw3-3 -llibfftw3f-3 -llibfftw3l-3
+
+RESOURCES += \
+    resources.qrc

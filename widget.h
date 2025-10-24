@@ -5,8 +5,9 @@
 #include <QAudioSource>
 #include <QMediaDevices>
 
-extern float rec_arr[500000];
+extern double rec_arr[];
 extern int rec_arr_cnt;
+extern int arr_size;
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

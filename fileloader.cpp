@@ -18,7 +18,7 @@ FileLoader::FileLoader(QObject *parent)
 
 void FileLoader::ReadConfig()
 {
-    QFile file(":/scripts/config.txt");
+    QFile file("://config.txt");
 
     if(!file.exists())
     {
@@ -52,7 +52,7 @@ void FileLoader::ReadConfig()
 
 void FileLoader::ReadLesson()
 {
-    QFile file(":/scripts/lessons.txt");
+    QFile file("://lessons.txt");
 
     if(!file.exists())
     {

@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <QDebug>
 
+int rec_arr_cnt;
 
 fftwStuff::fftwStuff(QObject *parent)
     : QObject{parent}
